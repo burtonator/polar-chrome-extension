@@ -1,0 +1,20 @@
+{
+  "name": "Share with Polar",
+  "description": "A powerful offline browser for Mac, Windows, and Linux for managing all your web content, books, and notes. Polar keeps all your content in one place, supports tagging, annotation, highlighting and keeps track of your reading progress",
+  "version": "1.0",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": ["storage"],
+  "browser_action": {
+    "name": "Click to share with Polar"
+  },
+  "icons": {
+    "16": "icon-16.png",
+    "32": "icon-32.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  },
+  "manifest_version": 2
+}
