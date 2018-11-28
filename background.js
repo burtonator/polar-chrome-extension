@@ -16,6 +16,13 @@ chrome.runtime.onInstalled.addListener(function() {
 
 function updateIcon() {
 
+    chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, (tabs) => {
+        var url = tabs[0].url;
+
+        console.log("current tab URL: " + url);
+
+    });
+
     chrome.storage.sync.get('number', function(data) {
 
         var current = data.number;
