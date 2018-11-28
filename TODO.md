@@ -1,0 +1,4 @@
+- better icon 
+- better icon when the URL is 'shared'
+- OPTIONS for the rest service since fetch uses CORS
+- UI for the error...  
