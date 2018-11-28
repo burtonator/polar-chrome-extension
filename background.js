@@ -31,6 +31,9 @@ function updateIcon() {
             current = 1;
         }
 
+        // FIXME: use a better URL to note that the URL is captured properly
+        // in polar.
+
         // chrome.browserAction.setIcon({path: 'icon' + current + '.png'});
         chrome.browserAction.setIcon({path: 'icon-polar-active.png'});
 
