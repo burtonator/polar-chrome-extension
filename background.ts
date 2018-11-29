@@ -1,14 +1,11 @@
 
+function loadLink(link: string) {
+    chrome.tabs.create({ url: link });
+}
+
 chrome.runtime.onInstalled.addListener(() => {
 
-    chrome.storage.sync.set({number: 1}, () => {
-
-        console.log("Installed the typescript version of the Polar extension");
-
-        // TODO: might be nice to popup a page asking the user to download
-        // Polar... or to load an about.html page ...
-
-        console.log('The number is set to 1.');
-    });
+    loadLink('https://getpolarized.io/download.html?utm_source=chrome_extension_on_installed&utm_medium=chrome_extension');
 
 });
+

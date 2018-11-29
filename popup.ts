@@ -1,7 +1,20 @@
-console.log("this is the script: ", chrome);
 
-console.log("document.location.href: " + document.location!.href);
+function loadLinkInNewTab(link: string) {
+    chrome.tabs.create({url: link});
+}
 
+function queryCurrentTabForLink() {
+
+    return new Promise<string>(resolve => {
+
+        chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, (tabs) => {
+            const link = tabs[0].url;
+            resolve(link);
+        });
+
+    });
+
+}
 
 function toggleVisibility(selector: string) {
 
@@ -79,29 +92,13 @@ async function sendLinkToPolar(link: string): Promise<void> {
 
 }
 
-function loadLinkInTag(link: string) {
-    chrome.tabs.create({url: link});
-}
-
-async function queryLinkForCurrentTab() {
-
-    return new Promise<string>(resolve => {
-
-        chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, (tabs) => {
-            const link = tabs[0].url;
-            resolve(link);
-        });
-
-    });
-
-}
 
 /**
  * Called when the user clicks the button in the page to 'share' with Polar.
  */
 async function onExtensionActivated() {
 
-    const link = await queryLinkForCurrentTab();
+    const link = await queryCurrentTabForLink();
 
     await sendLinkToPolar(link!);
 
@@ -114,7 +111,7 @@ async function onExtensionActivated() {
 function setupLinkHandlers() {
 
     document.querySelector("#download-link")!.addEventListener('click', () => {
-        loadLinkInTag('https://getpolarized.io/download.html?utm_source=chrome_extension_failed&utm_medium=chrome_extension')
+        loadLinkInNewTab('https://getpolarized.io/download.html?utm_source=chrome_extension_failed&utm_medium=chrome_extension');
     });
 
 }

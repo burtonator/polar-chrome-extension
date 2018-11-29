@@ -1,8 +1,8 @@
 "use strict";
+function loadLink(link) {
+    chrome.tabs.create({ url: link });
+}
 chrome.runtime.onInstalled.addListener(() => {
-    chrome.storage.sync.set({ number: 1 }, () => {
-        console.log("Installed the typescript version of the Polar extension");
-        console.log('The number is set to 1.');
-    });
+    loadLink('https://getpolarized.io/download.html?utm_source=chrome_extension_on_installed&utm_medium=chrome_extension');
 });
 //# sourceMappingURL=background.js.map
