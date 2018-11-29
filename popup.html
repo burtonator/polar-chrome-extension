@@ -1,0 +1,60 @@
+<html>
+<head>
+
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+
+    <style>
+
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+
+        .saving, .success, .failure {
+            min-width: 250px;
+            margin: 0 !important;
+        }
+
+        .success {
+        }
+
+        .success img {
+            margin-right: 10px;
+        }
+
+        .success, .failure {
+
+        }
+
+    </style>
+
+    <script src="./popup.js"></script>
+
+</head>
+
+<body>
+
+<div class="alert alert-secondary saving" role="alert">
+
+    <i class="fas fa-circle-notch fa-spin text-muted"></i>
+
+    <strong>Saving...</strong>
+
+</div>
+
+<div class="alert alert-secondary success" role="alert" style="display: none">
+    <img src="./icon-32.png">
+
+    <strong>Page Saved to Polar!</strong>
+</div>
+
+<div class="alert alert-danger failure" role="alert" style="display: none">
+
+    <strong>Failed to save to Polar.  Please make sure Polar is running.</strong>
+</div>
+
+</body>
+</html>

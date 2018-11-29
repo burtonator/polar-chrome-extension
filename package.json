@@ -9,6 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.5.0",
+    "bootstrap": "^4.1.1"
+  },
+  "devDependencies": {
     "@types/chrome": "0.0.75",
     "tslint": "^5.11.0",
     "typescript": "^3.1.6"
