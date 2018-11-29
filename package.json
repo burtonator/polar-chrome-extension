@@ -1,8 +1,7 @@
 {
   "name": "polar-chrome-extension",
-  "version": "1.0.0",
+  "version": "1.0.14",
   "description": "https://github.com/yeoman/generator-chrome-extension",
-  "main": "background.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

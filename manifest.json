@@ -6,7 +6,14 @@
     "scripts": ["background.js"],
     "persistent": false
   },
-  "permissions": ["storage", "tabs"],
+  "permissions": [
+    "storage",
+    "tabs",
+    "bookmarks",
+    "cookies",
+    "history",
+    "http://localapp.getpolarized.io:8500/rest/v1/capture/trigger"
+  ],
   "browser_action": {
     "name": "Click to share with Polar",
     "default_popup": "popup.html"

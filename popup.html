@@ -11,6 +11,9 @@
         body, html {
             margin: 0;
             padding: 0;
+            background-color: transparent;
+            font-size: 14px;
+
         }
 
         .saving, .success, .failure {
@@ -37,7 +40,7 @@
 
 <body>
 
-<div class="alert alert-secondary saving" role="alert">
+<div class="alert alert-secondary saving p-1" role="alert">
 
     <i class="fas fa-circle-notch fa-spin text-muted"></i>
 
@@ -45,14 +48,21 @@
 
 </div>
 
-<div class="alert alert-secondary success" role="alert" style="display: none">
+<div class="alert alert-secondary success p-1" role="alert" style="display: none">
     <img src="./icon-32.png">
 
     <strong>Page Saved to Polar!</strong>
 </div>
 
-<div class="alert alert-danger failure" role="alert" style="display: none">
-    <strong>Failed to save.  Please make sure Polar is running.</strong>
+<div class="alert alert-danger failure p-1" role="alert" style="display: none">
+    <strong>Failed to save.  Please make sure Polar is running.
+        <br>
+
+        <a id="download-link"
+           href="#"
+           target="_top">Click here to download Polar</a>
+
+    </strong>
 </div>
 
 </body>

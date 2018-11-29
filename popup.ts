@@ -35,24 +35,63 @@ function showSuccess() {
 
 }
 
+function closeWindowAfterDelay() {
+    setTimeout(() => window.close(), 7500);
+}
 
-async function sendLinkToPolar(link: string) {
+async function sendLinkToPolar(link: string): Promise<void> {
 
     console.log("Sending link to polar: " + link);
 
-    const url = 'http://localapp.getpolarized.io/rest/v1/trigger-capture';
+    const url = 'http://localapp.getpolarized.io:8500/rest/v1/capture/trigger';
 
     const data: any = {
         link
     };
 
-    await fetch(url, {
-        method: "POST",
-        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-        headers: {
-            "Content-Type": "application/json; charset=utf-8",
-        },
-        body: JSON.stringify(data), // body data type must match "Content-Type" header
+    return new Promise<void>((resolve, reject) => {
+
+        const xrequest = new XMLHttpRequest();
+        xrequest.open("POST", url);
+
+        xrequest.onload = () => {
+            resolve();
+        };
+
+        xrequest.onerror = () => {
+            reject("Request failed to: " + url);
+        };
+
+        xrequest.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+        xrequest.send(JSON.stringify(data));
+
+    });
+
+    // await fetch(url, {
+    //     method: "POST",
+    //     cache: "no-store",
+    //     // mode: 'no-cors',
+    //     headers: {
+    //         "Content-Type": "application/json; charset=utf-8",
+    //     },
+    //     body: JSON.stringify(data),
+    // });
+
+}
+
+function loadLinkInTag(link: string) {
+    chrome.tabs.create({url: link});
+}
+
+async function queryLinkForCurrentTab() {
+
+    return new Promise<string>(resolve => {
+
+        chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, (tabs) => {
+            const link = tabs[0].url;
+            resolve(link);
+        });
+
     });
 
 }
@@ -60,56 +99,36 @@ async function sendLinkToPolar(link: string) {
 /**
  * Called when the user clicks the button in the page to 'share' with Polar.
  */
-function onExtensionActivated() {
+async function onExtensionActivated() {
 
-    console.log("FIXME 0 here");
+    const link = await queryLinkForCurrentTab();
 
+    await sendLinkToPolar(link!);
 
-    // FIXME:
+    showSuccess();
+    closeWindowAfterDelay();
+    console.log("success");
 
-    // console.log("FIXME do we have a .success: ", document.querySelectorAll(".success"));
+}
 
-    chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, (tabs) => {
+function setupLinkHandlers() {
 
-        const link = tabs[0].url;
-
-        console.log("current tab URL: " + link);
-
-        sendLinkToPolar(link!)
-            .then(() => {
-                showSuccess();
-            })
-            .catch(err => {
-                showError();
-                console.error("Unable to send URL to polar: ", err)
-            });
-
-    });
-
-    chrome.storage.sync.get('number', (data) => {
-
-        let current = data.number;
-
-        if (current === undefined) {
-            current = 1;
-        }
-
-        // FIXME: use a better URL to note that the URL is captured properly
-        // in polar.
-
-        // chrome.browserAction.setIcon({path: 'icon' + current + '.png'});
-        chrome.browserAction.setIcon({path: 'icon-polar-active.png'});
-
-        current++;
-
-        if (current > 5)
-            current = 1;
-
-        chrome.storage.sync.set({number: current}, () => {
-            console.log('The number is set to ' + current);
-        });
-
+    document.querySelector("#download-link")!.addEventListener('click', () => {
+        loadLinkInTag('https://getpolarized.io/download.html?utm_source=chrome_extension_failed&utm_medium=chrome_extension')
     });
 
 }
-onExtensionActivated();
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    setupLinkHandlers();
+
+    onExtensionActivated()
+        .catch(err => {
+            console.log("failed");
+            showError();
+            closeWindowAfterDelay();
+            console.error("Unable to send URL to polar: ", err)
+        });
+
+});

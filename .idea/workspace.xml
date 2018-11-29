@@ -24,8 +24,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ca66773-10fc-4dff-9729-913e1e100df0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/post-install.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/burton.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/burton.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/popup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/popup.ts" beforeDir="false" afterPath="$PROJECT_DIR$/popup.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,46 +49,47 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
-          <entry key="html" value="1" />
+          <entry key="html" value="2" />
+          <entry key="ico" value="1" />
           <entry key="js" value="1" />
           <entry key="json" value="3" />
           <entry key="md" value="2" />
-          <entry key="png" value="4" />
-          <entry key="ts" value="1" />
+          <entry key="png" value="6" />
+          <entry key="ts" value="3" />
           <entry key="yaml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="1" />
-          <entry key="HTML" value="1" />
-          <entry key="Image" value="4" />
+          <entry key="HTML" value="2" />
+          <entry key="Image" value="7" />
           <entry key="JSON" value="2" />
           <entry key="JavaScript" value="1" />
           <entry key="Markdown" value="2" />
-          <entry key="TypeScript" value="1" />
+          <entry key="TypeScript" value="3" />
           <entry key="YAML" value="1" />
           <entry key="tsconfig" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="653" />
+          <entry key="html" value="999" />
           <entry key="js" value="418" />
-          <entry key="json" value="152" />
+          <entry key="json" value="188" />
           <entry key="md" value="209" />
-          <entry key="ts" value="1239" />
-          <entry key="txt" value="201" />
+          <entry key="ts" value="2481" />
+          <entry key="txt" value="204" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="653" />
-          <entry key="JSON" value="150" />
+          <entry key="HTML" value="999" />
+          <entry key="JSON" value="186" />
           <entry key="JavaScript" value="418" />
           <entry key="Markdown" value="209" />
-          <entry key="PLAIN_TEXT" value="201" />
-          <entry key="TypeScript" value="1239" />
+          <entry key="PLAIN_TEXT" value="204" />
+          <entry key="TypeScript" value="2481" />
           <entry key="tsconfig" value="2" />
         </counts>
       </usages-collector>
@@ -97,52 +103,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="FIRST">
-              <first_editor relative-caret-position="34">
-                <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/background.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TODO.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="FIRST">
-              <first_editor relative-caret-position="102">
-                <caret line="6" selection-start-line="6" selection-end-line="6" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tslint.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1035">
-              <caret line="81" selection-start-line="81" selection-end-line="81" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tsconfig.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="49" selection-start-line="49" selection-end-line="49" />
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -150,17 +114,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/manifest.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="33" lean-forward="true" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+            <state relative-caret-position="187">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/popup.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="918">
-              <caret line="54" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="554">
+              <caret line="42" column="17" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="17" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -170,24 +134,56 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/icon.ico">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/icon.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/popup.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="389">
-              <caret line="81" column="3" selection-start-line="81" selection-start-column="3" selection-end-line="81" selection-end-column="3" />
+              <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/bootstrap/dist/css/bootstrap.min.css">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/node_modules/typescript/lib/lib.dom.d.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="371">
+              <caret line="11145" column="10" selection-start-line="11145" selection-start-column="10" selection-end-line="11145" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/@types/chrome/index.d.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="371">
+              <caret line="6094" column="21" selection-start-line="6094" selection-start-column="21" selection-end-line="6094" selection-end-column="21" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+            <state relative-caret-position="68">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/post-install.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -197,6 +193,10 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>icon</find>
+      <find>current</find>
+      <find>beor</find>
+      <find>alert</find>
+      <find>close</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -217,10 +217,12 @@
         <option value="$PROJECT_DIR$/tslint.yaml" />
         <option value="$PROJECT_DIR$/tsconfig.json" />
         <option value="$PROJECT_DIR$/TODO.md" />
-        <option value="$PROJECT_DIR$/manifest.json" />
         <option value="$PROJECT_DIR$/background.ts" />
-        <option value="$PROJECT_DIR$/popup.ts" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/post-install.html" />
+        <option value="$PROJECT_DIR$/manifest.json" />
         <option value="$PROJECT_DIR$/popup.html" />
+        <option value="$PROJECT_DIR$/popup.ts" />
       </list>
     </option>
   </component>
@@ -239,10 +241,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="360" />
-    <option name="y" value="147" />
-    <option name="width" value="1504" />
-    <option name="height" value="1213" />
+    <option name="x" value="190" />
+    <option name="y" value="229" />
+    <option name="width" value="1807" />
+    <option name="height" value="1259" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -332,7 +334,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1543441532259</updated>
-      <workItem from="1543441534169" duration="9282000" />
+      <workItem from="1543441534169" duration="19730000" />
     </task>
     <task id="LOCAL-00001" summary="we can now read the current chrome UIRL...">
       <created>1543443674691</created>
@@ -355,19 +357,26 @@
       <option name="project" value="LOCAL" />
       <updated>1543461663407</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="...">
+      <created>1543461923056</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1543461923056</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9282000" />
+    <option name="totallyTimeSpent" value="19730000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="360" y="147" width="1504" height="1213" extended-state="0" />
+    <frame x="190" y="229" width="1807" height="1259" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20703347" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
@@ -402,6 +411,8 @@
         <option value="$PROJECT_DIR$/background.js.map" />
         <option value="$PROJECT_DIR$/popup.js.map" />
         <option value="$PROJECT_DIR$/popup.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/main/MainAPI.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/main/MainAPI.js.map" />
       </list>
     </option>
   </component>
@@ -412,19 +423,14 @@
     <MESSAGE value="we can now read the current chrome UIRL..." />
     <MESSAGE value="ts config works.. I can probably wrap this all up in a half day." />
     <MESSAGE value="UI works" />
-    <option name="LAST_COMMIT_MESSAGE" value="UI works" />
+    <MESSAGE value="..." />
+    <option name="LAST_COMMIT_MESSAGE" value="..." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/icon1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/icon-polar-inactive.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/icon-polar-active.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/icon.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
@@ -464,42 +470,72 @@
     <entry file="file://$PROJECT_DIR$/node_modules/bootstrap/dist/css/bootstrap.min.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/background.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icon1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icon.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icon.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/post-install.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/chrome/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="6094" column="21" selection-start-line="6094" selection-start-column="21" selection-end-line="6094" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/typescript/lib/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="11145" column="10" selection-start-line="11145" selection-start-column="10" selection-end-line="11145" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manifest.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/popup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="42" column="17" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="17" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/popup.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
-          <caret line="81" column="3" selection-start-line="81" selection-start-column="3" selection-end-line="81" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manifest.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="33" lean-forward="true" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/popup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+          <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
         </state>
       </provider>
     </entry>
