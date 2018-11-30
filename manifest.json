@@ -1,6 +1,6 @@
 {
   "name": "Save to Polar",
-  "description": "A powerful offline browser for Mac, Windows, and Linux for managing all your web content, books, and notes. Polar keeps all your content in one place, supports tagging, annotation, highlighting and keeps track of your reading progress",
+  "description": "A powerful offline browser for for managing PDF, web content, books, and notes with tagging, annotations, and highlighting.",
   "version": "1.0",
   "background": {
     "scripts": ["background.js"],
@@ -26,3 +26,5 @@
   },
   "manifest_version": 2
 }
+
+
