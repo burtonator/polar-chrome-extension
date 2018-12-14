@@ -7,6 +7,14 @@ function queryCurrentTabForLink() {
 
     return new Promise<string>(resolve => {
 
+        // FIXME: add contentType to the payload as we can get this from
+        // document.contentType and for PDF it will be application/pdf which
+        // will enable us to handle it properly in capture by importing it
+        // not rendering it.
+        //
+        // It might ALSO be better to just send the raw base64 encode bytes
+        // but not sure I can do that.
+
         chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, (tabs) => {
             const link = tabs[0].url;
             resolve(link);
