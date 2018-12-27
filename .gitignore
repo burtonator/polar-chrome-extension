@@ -1,0 +1,12 @@
+.idea
+node_modules
+extension
+dist
+.chrome-extension-key.pem
+jest_0/
+*.sublime-workspace
+*.swp
+yarn-error.log
+publish.sh
+stats.json
+.DS_Store
