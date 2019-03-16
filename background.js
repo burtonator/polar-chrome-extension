@@ -56,7 +56,54 @@ class HttpHeaders {
         }
         return undefined;
     }
+    static createContentDispositionAttachmentHeaders(details) {
+        const headers = details.responseHeaders;
+        if (headers) {
+            let cdHeader = this.hdr(headers, 'content-disposition');
+            if (!cdHeader) {
+                cdHeader = { name: 'Content-Disposition', };
+                headers.push(cdHeader);
+            }
+            if (cdHeader && cdHeader.value && !/^attachment/i.test(cdHeader.value)) {
+                cdHeader.value = 'attachment' + cdHeader.value.replace(/^[^;]+/i, '');
+                return { responseHeaders: headers };
+            }
+        }
+    }
 }
+chrome.webRequest.onHeadersReceived.addListener(details => {
+    if (details.method !== 'GET') {
+        return;
+    }
+    if (!isPdfFile(details)) {
+        return;
+    }
+    if (isDownloadable(details)) {
+        return HttpHeaders.createContentDispositionAttachmentHeaders(details);
+    }
+    const viewerUrl = getViewerURL(details.url);
+    return { redirectUrl: viewerUrl, };
+}, {
+    urls: [
+        '<all_urls>'
+    ],
+    types: ['main_frame', 'sub_frame'],
+}, ['blocking', 'responseHeaders']);
+chrome.webRequest.onBeforeRequest.addListener(details => {
+    if (isDownloadable(details)) {
+        return;
+    }
+    const viewerUrl = getViewerURL(details.url);
+    return { redirectUrl: viewerUrl, };
+}, {
+    urls: [
+        'file://*/*.pdf',
+        'file://*/*.PDF',
+        'ftp://*/*.pdf',
+        'ftp://*/*.PDF',
+    ],
+    types: ['main_frame', 'sub_frame'],
+}, ['blocking']);
 chrome.extension.isAllowedFileSchemeAccess((isAllowedAccess) => {
     if (isAllowedAccess) {
         return;

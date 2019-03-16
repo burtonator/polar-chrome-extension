@@ -1,3 +1,6 @@
+import WebResponseHeadersDetails = chrome.webRequest.WebResponseHeadersDetails;
+import WebRequestBodyDetails = chrome.webRequest.WebRequestBodyDetails;
+import WebNavigationParentedCallbackDetails = chrome.webNavigation.WebNavigationParentedCallbackDetails;
 
 function getViewerURL(pdfURL: string) {
 
@@ -16,7 +19,7 @@ function loadLink(link: string) {
  * the URL, etc.
  *
  */
-function isDownloadable(details: chrome.webRequest.WebResponseHeadersDetails | chrome.webNavigation.WebNavigationParentedCallbackDetails) {
+function isDownloadable(details: WebResponseHeadersDetails | WebNavigationParentedCallbackDetails | WebRequestBodyDetails) {
 
     if (details.url.includes('pdfjs.action=download') ||
         details.url.includes('polar.action=download')) {
@@ -30,7 +33,7 @@ function isDownloadable(details: chrome.webRequest.WebResponseHeadersDetails | c
 
     if ((<any> details).type) {
 
-        details = <chrome.webRequest.WebResponseHeadersDetails> details;
+        details = <WebResponseHeadersDetails> details;
 
         // Display the PDF viewer regardless of the Content-Disposition header if the
         // file is displayed in the main frame, since most often users want to view
@@ -119,7 +122,91 @@ class HttpHeaders {
 
     }
 
+    /**
+     * Takes a set of headers, and set "Content-Disposition: attachment".
+     * @param {Object} details First argument of the webRequest.onHeadersReceived
+     *                         event. The property "responseHeaders" is read and
+     *                         modified if needed.
+     *
+     * @return {Object|undefined} The return value for the onHeadersReceived event.
+     *                            Object with key "responseHeaders" if the headers
+     *                            have been modified, undefined otherwise.
+     */
+    public static createContentDispositionAttachmentHeaders(details: WebResponseHeadersDetails): any | undefined {
+
+        const headers = details.responseHeaders;
+
+        if (headers) {
+
+            let cdHeader = this.hdr(headers, 'content-disposition');
+
+            if (!cdHeader) {
+                cdHeader = { name: 'Content-Disposition', };
+                headers.push(cdHeader);
+            }
+
+            if (cdHeader && cdHeader.value && !/^attachment/i.test(cdHeader.value)) {
+                cdHeader.value = 'attachment' + cdHeader.value.replace(/^[^;]+/i, '');
+                return { responseHeaders: headers};
+            }
+
+        }
+
+    }
+
 }
+
+chrome.webRequest.onHeadersReceived.addListener(details => {
+
+        if (details.method !== 'GET') {
+            // Don't intercept POST requests until http://crbug.com/104058 is fixed.
+            return;
+        }
+
+        if (!isPdfFile(details)) {
+            return;
+        }
+
+        if (isDownloadable(details)) {
+            // Force download by ensuring that Content-Disposition: attachment is set
+            return HttpHeaders.createContentDispositionAttachmentHeaders(details);
+        }
+
+        const viewerUrl = getViewerURL(details.url);
+
+        // TODO: implement this in the future.
+        // saveReferer(details);
+
+        return { redirectUrl: viewerUrl, };
+    },
+    {
+        urls: [
+            '<all_urls>'
+        ],
+        types: ['main_frame', 'sub_frame'],
+    },
+    ['blocking', 'responseHeaders']);
+
+chrome.webRequest.onBeforeRequest.addListener(details => {
+
+      if (isDownloadable(details)) {
+          return;
+      }
+
+      const viewerUrl = getViewerURL(details.url);
+
+      return { redirectUrl: viewerUrl, };
+  },
+  {
+    urls: [
+      'file://*/*.pdf',
+      'file://*/*.PDF',
+      'ftp://*/*.pdf',
+      'ftp://*/*.PDF',
+    ],
+    types: ['main_frame', 'sub_frame'],
+  },
+  ['blocking']);
 
 chrome.extension.isAllowedFileSchemeAccess((isAllowedAccess) => {
 
