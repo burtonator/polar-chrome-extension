@@ -4,7 +4,7 @@
   "version": "1.1.0",
   "background": {
     "scripts": ["background.js"],
-    "persistent": false
+    "persistent": true
   },
   "permissions": [
     "fileBrowserHandler",
@@ -28,7 +28,6 @@
     ],
     "run_at": "document_start",
     "all_frames": true,
-    "css": ["contentstyle.css"],
     "js": ["contentscript.js"]
   }],
   "file_browser_handlers": [{
