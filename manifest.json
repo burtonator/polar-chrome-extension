@@ -1,7 +1,7 @@
 {
   "name": "Save to Polar - PDF, Web, and Document Annotation",
   "description": "A powerful offline browser for for managing PDF, web content, books, and notes with tagging, annotations, and highlighting.",
-  "version": "1.1.0",
+  "version": "1.5.0",
   "background": {
     "scripts": ["background.js"],
     "persistent": true

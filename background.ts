@@ -2,6 +2,10 @@ import WebResponseHeadersDetails = chrome.webRequest.WebResponseHeadersDetails;
 import WebRequestBodyDetails = chrome.webRequest.WebRequestBodyDetails;
 import WebNavigationParentedCallbackDetails = chrome.webNavigation.WebNavigationParentedCallbackDetails;
 
+// const ALLOWED_ORIGINS = 'https://app.getpolarized.io, https://getpolarized.io, https://app-staging.getpolarized.io, https://localapp.getpolarized.io';
+
+const ALLOWED_ORIGINS = 'https://app.getpolarized.io';
+
 function getViewerURL(pdfURL: string) {
 
     return 'https://app.getpolarized.io/pdfviewer/web/index.html?file=' +
@@ -60,13 +64,13 @@ function isDownloadable(details: WebResponseHeadersDetails | WebNavigationParent
 /**
  * Return true if this is a PDF file.
  */
-function isPdfFile(details: chrome.webRequest.WebResponseHeadersDetails) {
+function isPDF(details: chrome.webRequest.WebResponseHeadersDetails) {
 
-    const header = HttpHeaders.hdr(details.responseHeaders, 'content-type');
+    const contentTypeHeader = HttpHeaders.hdr(details.responseHeaders, 'content-type');
 
-    if (header && header.value) {
+    if (contentTypeHeader && contentTypeHeader.value) {
 
-        const headerValue = header.value.toLowerCase().split(';', 1)[0].trim();
+        const headerValue = contentTypeHeader.value.toLowerCase().split(';', 1)[0].trim();
 
         if (headerValue === 'application/pdf') {
             return true;
@@ -163,7 +167,7 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
             return;
         }
 
-        if (!isPdfFile(details)) {
+        if (!isPDF(details)) {
             return;
         }
 
@@ -187,15 +191,35 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
     },
     ['blocking', 'responseHeaders']);
 
+//
+chrome.webRequest.onHeadersReceived.addListener(details => {
+
+        const responseHeaders = details.responseHeaders || [];
+
+        if (isPDF(details)) {
+            responseHeaders.push({name: 'Access-Control-Allow-Origin', value: ALLOWED_ORIGINS});
+        }
+
+        return {responseHeaders};
+
+    },
+    {
+        urls: [
+            '<all_urls>'
+        ]
+    },
+    ['blocking', 'responseHeaders']);
+
+
 chrome.webRequest.onBeforeRequest.addListener(details => {
 
-      if (isDownloadable(details)) {
-          return;
-      }
+    if (isDownloadable(details)) {
+        return;
+    }
 
-      const viewerUrl = getViewerURL(details.url);
+    const viewerUrl = getViewerURL(details.url);
 
-      return { redirectUrl: viewerUrl, };
+    return { redirectUrl: viewerUrl, };
   },
   {
     urls: [
@@ -245,3 +269,4 @@ chrome.runtime.onInstalled.addListener(() => {
     }
 
 });
+

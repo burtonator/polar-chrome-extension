@@ -1,4 +1,5 @@
 "use strict";
+const ALLOWED_ORIGINS = 'https://app.getpolarized.io';
 function getViewerURL(pdfURL) {
     return 'https://app.getpolarized.io/pdfviewer/web/index.html?file=' +
         encodeURIComponent(pdfURL) +
@@ -23,10 +24,10 @@ function isDownloadable(details) {
     }
     return false;
 }
-function isPdfFile(details) {
-    const header = HttpHeaders.hdr(details.responseHeaders, 'content-type');
-    if (header && header.value) {
-        const headerValue = header.value.toLowerCase().split(';', 1)[0].trim();
+function isPDF(details) {
+    const contentTypeHeader = HttpHeaders.hdr(details.responseHeaders, 'content-type');
+    if (contentTypeHeader && contentTypeHeader.value) {
+        const headerValue = contentTypeHeader.value.toLowerCase().split(';', 1)[0].trim();
         if (headerValue === 'application/pdf') {
             return true;
         }
@@ -75,7 +76,7 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
     if (details.method !== 'GET') {
         return;
     }
-    if (!isPdfFile(details)) {
+    if (!isPDF(details)) {
         return;
     }
     if (isDownloadable(details)) {
@@ -88,6 +89,17 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
         '<all_urls>'
     ],
     types: ['main_frame', 'sub_frame'],
+}, ['blocking', 'responseHeaders']);
+chrome.webRequest.onHeadersReceived.addListener(details => {
+    const responseHeaders = details.responseHeaders || [];
+    if (isPDF(details)) {
+        responseHeaders.push({ name: 'Access-Control-Allow-Origin', value: ALLOWED_ORIGINS });
+    }
+    return { responseHeaders };
+}, {
+    urls: [
+        '<all_urls>'
+    ]
 }, ['blocking', 'responseHeaders']);
 chrome.webRequest.onBeforeRequest.addListener(details => {
     if (isDownloadable(details)) {
