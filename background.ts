@@ -262,7 +262,7 @@ chrome.extension.isAllowedFileSchemeAccess((isAllowedAccess) => {
 
 });
 
-// TODO move this to a dedicated file.
+// TODO move this to a dedicated file for handling the initial page load.
 
 chrome.runtime.onInstalled.addListener(() => {
 
