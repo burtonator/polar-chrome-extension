@@ -25,6 +25,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9ca66773-10fc-4dff-9729-913e1e100df0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/background.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/background.ts" beforeDir="false" afterPath="$PROJECT_DIR$/background.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -117,16 +118,16 @@
         <counts>
           <entry key="json" value="30" />
           <entry key="md" value="32" />
-          <entry key="ts" value="3054" />
-          <entry key="txt" value="258" />
+          <entry key="ts" value="3374" />
+          <entry key="txt" value="286" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="30" />
           <entry key="Markdown" value="32" />
-          <entry key="PLAIN_TEXT" value="258" />
-          <entry key="TypeScript" value="3054" />
+          <entry key="PLAIN_TEXT" value="286" />
+          <entry key="TypeScript" value="3374" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -178,8 +179,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/background.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3312">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="633">
+              <caret line="276" lean-forward="true" selection-start-line="276" selection-end-line="276" />
               <folding>
                 <element signature="n#WebResponseHeadersDetails#0" expanded="true" />
               </folding>
@@ -367,7 +368,7 @@
     <property name="GO_FMT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552757392044" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552759024374" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -436,7 +437,7 @@
       <updated>1543441532259</updated>
       <workItem from="1543441534169" duration="29663000" />
       <workItem from="1544805861894" duration="711000" />
-      <workItem from="1552675553269" duration="8442000" />
+      <workItem from="1552675553269" duration="9192000" />
     </task>
     <task id="LOCAL-00001" summary="we can now read the current chrome UIRL...">
       <created>1543443674691</created>
@@ -515,11 +516,18 @@
       <option name="project" value="LOCAL" />
       <updated>1552757336382</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="mild cleanup...">
+      <created>1552757506259</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1552757506259</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38816000" />
+    <option name="totallyTimeSpent" value="39566000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1440" height="877" extended-state="6" />
@@ -1622,7 +1630,8 @@
     <MESSAGE value="support for replacing the URL on download if we click on a PDF URL.." />
     <MESSAGE value="update permissions..." />
     <MESSAGE value="redirects to the webapp now... and properly specifying cors headers now." />
-    <option name="LAST_COMMIT_MESSAGE" value="redirects to the webapp now... and properly specifying cors headers now." />
+    <MESSAGE value="mild cleanup..." />
+    <option name="LAST_COMMIT_MESSAGE" value="mild cleanup..." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/icon-polar-inactive.png">
@@ -1738,8 +1747,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/background.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3312">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="633">
+          <caret line="276" lean-forward="true" selection-start-line="276" selection-end-line="276" />
           <folding>
             <element signature="n#WebResponseHeadersDetails#0" expanded="true" />
           </folding>

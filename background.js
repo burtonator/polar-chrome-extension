@@ -1,5 +1,6 @@
 "use strict";
 const ALLOWED_ORIGINS = 'https://app.getpolarized.io';
+const INITIAL_URL = 'https://app.getpolarized.io/?utm_source=app_on_install&utm_medium=chrome_extension';
 function getViewerURL(pdfURL) {
     return 'https://app.getpolarized.io/pdfviewer/web/index.html?file=' +
         encodeURIComponent(pdfURL) +
@@ -138,7 +139,7 @@ chrome.extension.isAllowedFileSchemeAccess((isAllowedAccess) => {
 });
 chrome.runtime.onInstalled.addListener(() => {
     if (localStorage.getItem('has-downloaded') !== 'true') {
-        loadLink('https://getpolarized.io/download.html?utm_source=chrome_extension_on_installed&utm_medium=chrome_extension');
+        loadLink(INITIAL_URL);
         localStorage.setItem('has-downloaded', 'true');
     }
     else {

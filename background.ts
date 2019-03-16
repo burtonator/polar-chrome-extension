@@ -2,10 +2,15 @@ import WebResponseHeadersDetails = chrome.webRequest.WebResponseHeadersDetails;
 import WebRequestBodyDetails = chrome.webRequest.WebRequestBodyDetails;
 import WebNavigationParentedCallbackDetails = chrome.webNavigation.WebNavigationParentedCallbackDetails;
 
-// TODO: we can't use multiple origins with this type of request so we have to
+// We can't use multiple origins with this type of request so we have to
 // see which URL we're redirecting to but in practice I think our main app URL
 // is fine.
 const ALLOWED_ORIGINS = 'https://app.getpolarized.io';
+
+// Load the Polar webapp after install which will send to login if not
+// authenticated first and also give the user the option to download.
+
+const INITIAL_URL = 'https://app.getpolarized.io/?utm_source=app_on_install&utm_medium=chrome_extension';
 
 function getViewerURL(pdfURL: string) {
 
@@ -101,7 +106,6 @@ function isPDF(details: chrome.webRequest.WebResponseHeadersDetails) {
     return false;
 
 }
-
 
 class HttpHeaders {
 
@@ -263,7 +267,7 @@ chrome.extension.isAllowedFileSchemeAccess((isAllowedAccess) => {
 chrome.runtime.onInstalled.addListener(() => {
 
     if (localStorage.getItem('has-downloaded') !== 'true') {
-        loadLink('https://getpolarized.io/download.html?utm_source=chrome_extension_on_installed&utm_medium=chrome_extension');
+        loadLink(INITIAL_URL);
         localStorage.setItem('has-downloaded', 'true');
     } else {
         // noop
