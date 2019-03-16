@@ -1,10 +1,13 @@
 <component name="ProjectDictionaryState">
   <dictionary name="burton">
     <words>
+      <w>contentscript</w>
+      <w>contentstyle</w>
       <w>cors</w>
       <w>fontawesome</w>
       <w>fortawesome</w>
       <w>onerror</w>
+      <w>pdfjs</w>
       <w>xrequest</w>
     </words>
   </dictionary>

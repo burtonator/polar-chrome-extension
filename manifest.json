@@ -7,6 +7,11 @@
     "persistent": false
   },
   "permissions": [
+    "fileBrowserHandler",
+    "webRequest",
+    "webRequestBlocking",
+    "webNavigation",
+    "<all_urls>",
     "storage",
     "tabs",
     "bookmarks",
@@ -14,8 +19,27 @@
     "history",
     "http://localapp.getpolarized.io:8500/rest/v1/capture/trigger"
   ],
+  "content_scripts": [{
+    "matches": [
+      "http://*/*",
+      "https://*/*",
+      "ftp://*/*",
+      "file://*/*"
+    ],
+    "run_at": "document_start",
+    "all_frames": true,
+    "css": ["contentstyle.css"],
+    "js": ["contentscript.js"]
+  }],
+  "file_browser_handlers": [{
+    "id": "open-as-pdf",
+    "default_title": "Open with Polar",
+    "file_filters": [
+      "filesystem:*.pdf"
+    ]
+  }],
   "browser_action": {
-    "name": "Click to share with Polar",
+    "name": "Click to save with Polar",
     "default_popup": "popup.html"
   },
   "icons": {
