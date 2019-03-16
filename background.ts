@@ -2,8 +2,9 @@ import WebResponseHeadersDetails = chrome.webRequest.WebResponseHeadersDetails;
 import WebRequestBodyDetails = chrome.webRequest.WebRequestBodyDetails;
 import WebNavigationParentedCallbackDetails = chrome.webNavigation.WebNavigationParentedCallbackDetails;
 
-// const ALLOWED_ORIGINS = 'https://app.getpolarized.io, https://getpolarized.io, https://app-staging.getpolarized.io, https://localapp.getpolarized.io';
-
+// TODO: we can't use multiple origins with this type of request so we have to
+// see which URL we're redirecting to but in practice I think our main app URL
+// is fine.
 const ALLOWED_ORIGINS = 'https://app.getpolarized.io';
 
 function getViewerURL(pdfURL: string) {
