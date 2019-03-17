@@ -13,6 +13,18 @@ const ALLOWED_ORIGINS = 'https://app.getpolarized.io';
 
 const INITIAL_URL = 'https://app.getpolarized.io/?utm_source=app_on_install&utm_medium=chrome_extension';
 
+// FIXME work on detecting polar via ping to see if it's running and when it is
+// see if we should 'prefer' the local desktop version and how we're going to do that
+//
+//  - if the user has polar as a desktop app, tell the app that it's running
+//
+//  - if the app is running, display an 'Add to Desktop' button
+//
+//  - if the app is NOT running, but logged in automatically add to polar
+//
+//  - else preview and add an 'Add +' button that prompts to save and then adds the document.
+///   this one can be done later though.
+
 function getViewerURL(pdfURL: string) {
 
     return 'https://app.getpolarized.io/pdfviewer/web/index.html?file=' +
