@@ -23,7 +23,9 @@ const INITIAL_URL = 'https://app.getpolarized.io/?utm_source=app_on_install&utm_
 //  - if the app is NOT running, but logged in automatically add to polar
 //
 //  - else preview and add an 'Add +' button that prompts to save and then adds the document.
-///   this one can be done later though.
+//   this one can be done later though.
+//
+//  - FIXME only show the button when the desktop app is active ...
 
 function getViewerURL(pdfURL: string) {
 

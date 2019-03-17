@@ -7,6 +7,7 @@
     "persistent": true
   },
   "permissions": [
+    "activeTab",
     "fileBrowserHandler",
     "webRequest",
     "webRequestBlocking",
@@ -14,10 +15,25 @@
     "<all_urls>",
     "storage",
     "tabs",
-    "bookmarks",
+    "tabCapture",
     "cookies",
+    "http://localhost:8500/rest/v1/capture/trigger",
+    "contextMenus",
+    "unlimitedStorage",
+    "declarativeContent",
+    "idle",
+    "storage",
+  ],
+  "optional_permissions": [
+    "clipboardRead",
+    "clipboardWrite",
     "history",
-    "http://localapp.getpolarized.io:8500/rest/v1/capture/trigger"
+    "bookmarks",
+    "documentScan",
+    "identity",
+    "notifications",
+    "tts",
+    "geolocation"
   ],
   "content_scripts": [{
     "matches": [
