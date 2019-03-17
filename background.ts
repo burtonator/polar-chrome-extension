@@ -26,6 +26,17 @@ const INITIAL_URL = 'https://app.getpolarized.io/?utm_source=app_on_install&utm_
 //   this one can be done later though.
 //
 //  - FIXME only show the button when the desktop app is active ...
+//
+// - FIXME pass a param of &desktop_active= with true|false as the options and
+//   or have the chrome extension add/remove the button directly
+//
+// - if the desktop app is running,
+//
+// - TODO: new polar nav bar should have:
+//
+//    - polar identify branding to the left...
+//
+//    - 'add to polar' button to the left of the logo
 
 function getViewerURL(pdfURL: string) {
 
@@ -179,6 +190,99 @@ class HttpHeaders {
     }
 
 }
+
+/**
+ * Background 'task' that sends 'ping' requests to the desktop app continually
+ * to detect its state.
+ */
+class DesktopAppPinger {
+
+    // TODO: instead of constantly pinging maybe we could ping when we need
+    // the app.  We could have a way to just directly fetch the state.
+
+    // the state of the desktop app, initially inactive
+    private state: DesktopAppState = 'inactive';
+
+    private static UPDATE_TIMEOUT: number = 1000;
+
+    public start(): void {
+
+        setTimeout(() => {
+
+            this.update()
+                .catch(err => console.error("Unable to start updating: ", err));
+
+        }, 1);
+
+    }
+
+    public getState(): DesktopAppState {
+        return this.state;
+    }
+
+    /**
+     * Update the state by sending a ping.
+     */
+    private async update() {
+
+        // TODO: there should be a better way to handle distributing state
+        // information from the desktop app to the chrome extension but don't
+        // want anything too complicated for now.
+
+        try {
+            await this.sendPing();
+            this.state = 'active';
+        } catch (e) {
+            // noop as this is normal and we just have to update the state
+            this.state = 'inactive';
+        } finally {
+            // now continually ping in the background
+            setTimeout(() => this.update(), DesktopAppPinger.UPDATE_TIMEOUT);
+        }
+
+    }
+
+    /**
+     * Send a ping request to Polar to make sure it's active locally and when
+     * it's not active we can't capture the URL and perform other desktop
+     * tasks.
+     */
+    private async sendPing(): Promise<void> {
+
+        const url = 'http://localhost:8500/rest/v1/ping';
+
+        return new Promise<void>((resolve, reject) => {
+
+            // For some reason the fetch API doesn't work and we have to hse XHR
+            // for this functionality.
+
+            const xrequest = new XMLHttpRequest();
+            xrequest.open("GET", url);
+
+            xrequest.onload = () => {
+                resolve();
+            };
+
+            xrequest.onerror = () => {
+                const {status, responseText} = xrequest;
+                reject(new Error(`Request failed to: ${url} ${status}: ${responseText}`));
+            };
+
+            xrequest.send();
+
+        });
+
+    }
+
+
+}
+
+export interface PingResponse {
+    readonly timestamp: number;
+    readonly version: string;
+}
+
+export type DesktopAppState = 'active' | 'inactive';
 
 chrome.webRequest.onHeadersReceived.addListener(details => {
 

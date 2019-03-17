@@ -7,6 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 const ALLOWED_ORIGINS = 'https://app.getpolarized.io';
 const INITIAL_URL = 'https://app.getpolarized.io/?utm_source=app_on_install&utm_medium=chrome_extension';
 function getViewerURL(pdfURL) {
@@ -81,6 +82,52 @@ class HttpHeaders {
         }
     }
 }
+class DesktopAppPinger {
+    constructor() {
+        this.state = 'inactive';
+    }
+    start() {
+        setTimeout(() => {
+            this.update()
+                .catch(err => console.error("Unable to start updating: ", err));
+        }, 1);
+    }
+    getState() {
+        return this.state;
+    }
+    update() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield this.sendPing();
+                this.state = 'active';
+            }
+            catch (e) {
+                this.state = 'inactive';
+            }
+            finally {
+                setTimeout(() => this.update(), DesktopAppPinger.UPDATE_TIMEOUT);
+            }
+        });
+    }
+    sendPing() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const url = 'http://localhost:8500/rest/v1/ping';
+            return new Promise((resolve, reject) => {
+                const xrequest = new XMLHttpRequest();
+                xrequest.open("GET", url);
+                xrequest.onload = () => {
+                    resolve();
+                };
+                xrequest.onerror = () => {
+                    const { status, responseText } = xrequest;
+                    reject(new Error(`Request failed to: ${url} ${status}: ${responseText}`));
+                };
+                xrequest.send();
+            });
+        });
+    }
+}
+DesktopAppPinger.UPDATE_TIMEOUT = 1000;
 chrome.webRequest.onHeadersReceived.addListener(details => {
     if (details.method !== 'GET') {
         return;

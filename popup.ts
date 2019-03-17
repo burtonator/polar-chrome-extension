@@ -60,41 +60,11 @@ function closeWindowAfterDelay() {
     setTimeout(() => window.close(), 7500);
 }
 
-/**
- * Send a ping request to Polar to make sure it's active locally and when
- * it's not active we can't capture the URL
- */
-async function sendPing(): Promise<void> {
-
-    const url = 'http://localapp.getpolarized.io:8500/rest/v1/ping';
-
-    return new Promise<void>((resolve, reject) => {
-
-        // For some reason the fetch API doesn't work and we have to hse XHR
-        // for this functionality.
-
-        const xrequest = new XMLHttpRequest();
-        xrequest.open("GET", url);
-
-        xrequest.onload = () => {
-            resolve();
-        };
-
-        xrequest.onerror = () => {
-            reject("Request failed to: " + url);
-        };
-
-        xrequest.send();
-
-    });
-
-}
-
 async function sendLinkToPolar(link: string): Promise<void> {
 
     console.log("Sending link to polar: " + link);
 
-    const url = 'http://localapp.getpolarized.io:8500/rest/v1/capture/trigger';
+    const url = 'http://localhost:8500/rest/v1/capture/trigger';
 
     const data: any = {
         link
