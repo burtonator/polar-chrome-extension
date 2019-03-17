@@ -1,6 +1,7 @@
 import WebResponseHeadersDetails = chrome.webRequest.WebResponseHeadersDetails;
 import WebRequestBodyDetails = chrome.webRequest.WebRequestBodyDetails;
 import WebNavigationParentedCallbackDetails = chrome.webNavigation.WebNavigationParentedCallbackDetails;
+import BlockingResponse = chrome.webRequest.BlockingResponse;
 
 // We can't use multiple origins with this type of request so we have to
 // see which URL we're redirecting to but in practice I think our main app URL
@@ -215,27 +216,41 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
     },
     ['blocking', 'responseHeaders']);
 
+const ENABLE_FILE_URLS = false;
 
-chrome.webRequest.onBeforeRequest.addListener(details => {
+if (ENABLE_FILE_URLS) {
 
-    if (isDownloadable(details)) {
-        return;
-    }
+    chrome.webRequest.onBeforeRequest.addListener(async (details): Promise<BlockingResponse | undefined> => {
 
-    const viewerUrl = getViewerURL(details.url);
+        if (isDownloadable(details)) {
+            return;
+        }
 
-    return { redirectUrl: viewerUrl, };
-  },
-  {
-    urls: [
-      'file://*/*.pdf',
-      'file://*/*.PDF',
-      'ftp://*/*.pdf',
-      'ftp://*/*.PDF',
-    ],
-    types: ['main_frame', 'sub_frame'],
-  },
-  ['blocking']);
+        // FIXME: this has a bug where we can't determine how to open the file URL properly
+        // because it can't use a CORS request with fetch for some reason.
+
+        // background.js:120 Fetch API cannot load file:///Users/burton/Downloads/bitcoin%20(1).pdf. URL scheme "file" is not supported.
+
+        const response = await fetch(details.url, {mode: 'no-cors'});
+        const blob = await response.blob();
+
+        const url = URL.createObjectURL(blob);
+        const viewerUrl = getViewerURL(url);
+
+        return { redirectUrl: viewerUrl, };
+      },
+      {
+        urls: [
+          'file://*/*.pdf',
+          'file://*/*.PDF',
+          // 'ftp://*/*.pdf',
+          // 'ftp://*/*.PDF',
+        ],
+        types: ['main_frame', 'sub_frame'],
+      },
+      ['blocking']);
+
+}
 
 chrome.extension.isAllowedFileSchemeAccess((isAllowedAccess) => {
 

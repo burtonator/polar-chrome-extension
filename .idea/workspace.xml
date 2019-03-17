@@ -23,7 +23,7 @@
     <option name="FILTER_BY_CURRENT_PROJECT" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ca66773-10fc-4dff-9729-913e1e100df0" name="Default Changelist" comment="">
+    <list default="true" id="9ca66773-10fc-4dff-9729-913e1e100df0" name="Default Changelist" comment="...">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/background.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/background.ts" beforeDir="false" afterPath="$PROJECT_DIR$/background.ts" afterDir="false" />
@@ -118,26 +118,26 @@
         <counts>
           <entry key="json" value="30" />
           <entry key="md" value="32" />
-          <entry key="ts" value="3374" />
-          <entry key="txt" value="286" />
+          <entry key="ts" value="4114" />
+          <entry key="txt" value="333" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="30" />
           <entry key="Markdown" value="32" />
-          <entry key="PLAIN_TEXT" value="286" />
-          <entry key="TypeScript" value="3374" />
+          <entry key="PLAIN_TEXT" value="333" />
+          <entry key="TypeScript" value="4114" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="ts" value="2" />
+          <entry key="ts" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="TypeScript" value="2" />
+          <entry key="TypeScript" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -179,11 +179,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/background.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="633">
-              <caret line="276" lean-forward="true" selection-start-line="276" selection-end-line="276" />
+            <state relative-caret-position="45">
+              <caret line="218" column="30" selection-start-line="218" selection-start-column="30" selection-end-line="218" selection-end-column="30" />
               <folding>
                 <element signature="n#WebResponseHeadersDetails#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="398">
+              <caret line="17290" column="5" selection-start-line="17290" selection-start-column="5" selection-end-line="17290" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -193,15 +202,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="237">
               <caret line="7287" column="16" selection-start-line="7287" selection-start-column="16" selection-end-line="7287" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dist.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -249,7 +249,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>icon</find>
       <find>current</find>
       <find>beor</find>
       <find>close</find>
@@ -279,6 +278,7 @@
       <find>onheadersre</find>
       <find>responseHeaders</find>
       <find>createContentDispositionAttachmentHeaders</find>
+      <find>http</find>
     </findStrings>
     <replaceStrings>
       <replace>cp</replace>
@@ -368,7 +368,7 @@
     <property name="GO_FMT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552759167864" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552793288529" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -437,7 +437,7 @@
       <updated>1543441532259</updated>
       <workItem from="1543441534169" duration="29663000" />
       <workItem from="1544805861894" duration="711000" />
-      <workItem from="1552675553269" duration="9192000" />
+      <workItem from="1552675553269" duration="11703000" />
     </task>
     <task id="LOCAL-00001" summary="we can now read the current chrome UIRL...">
       <created>1543443674691</created>
@@ -523,14 +523,28 @@
       <option name="project" value="LOCAL" />
       <updated>1552757506259</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="supporting background URL handling...">
+      <created>1552759062129</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1552759062129</updated>
+    </task>
+    <task id="LOCAL-00014" summary="...">
+      <created>1552759193064</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1552759193064</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39566000" />
+    <option name="totallyTimeSpent" value="42077000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1440" height="877" extended-state="6" />
+    <frame x="-1" y="24" width="1440" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
@@ -1625,13 +1639,14 @@
     <MESSAGE value="UI works" />
     <MESSAGE value="works enough to verify that it is setup properly..." />
     <MESSAGE value="open the download page after the extension is installed..." />
-    <MESSAGE value="..." />
     <MESSAGE value="new rework to add support for auto-handling of PDFs and importing into Polar." />
     <MESSAGE value="support for replacing the URL on download if we click on a PDF URL.." />
     <MESSAGE value="update permissions..." />
     <MESSAGE value="redirects to the webapp now... and properly specifying cors headers now." />
     <MESSAGE value="mild cleanup..." />
-    <option name="LAST_COMMIT_MESSAGE" value="mild cleanup..." />
+    <MESSAGE value="supporting background URL handling..." />
+    <MESSAGE value="..." />
+    <option name="LAST_COMMIT_MESSAGE" value="..." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/icon-polar-inactive.png">
@@ -1745,10 +1760,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="17290" column="5" selection-start-line="17290" selection-start-column="5" selection-end-line="17290" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/background.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="276" lean-forward="true" selection-start-line="276" selection-end-line="276" />
+        <state relative-caret-position="45">
+          <caret line="218" column="30" selection-start-line="218" selection-start-column="30" selection-end-line="218" selection-end-column="30" />
           <folding>
             <element signature="n#WebResponseHeadersDetails#0" expanded="true" />
           </folding>

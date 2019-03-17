@@ -1,4 +1,12 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 const ALLOWED_ORIGINS = 'https://app.getpolarized.io';
 const INITIAL_URL = 'https://app.getpolarized.io/?utm_source=app_on_install&utm_medium=chrome_extension';
 function getViewerURL(pdfURL) {
@@ -102,21 +110,25 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
         '<all_urls>'
     ]
 }, ['blocking', 'responseHeaders']);
-chrome.webRequest.onBeforeRequest.addListener(details => {
-    if (isDownloadable(details)) {
-        return;
-    }
-    const viewerUrl = getViewerURL(details.url);
-    return { redirectUrl: viewerUrl, };
-}, {
-    urls: [
-        'file://*/*.pdf',
-        'file://*/*.PDF',
-        'ftp://*/*.pdf',
-        'ftp://*/*.PDF',
-    ],
-    types: ['main_frame', 'sub_frame'],
-}, ['blocking']);
+const ENABLE_FILE_URLS = false;
+if (ENABLE_FILE_URLS) {
+    chrome.webRequest.onBeforeRequest.addListener((details) => __awaiter(this, void 0, void 0, function* () {
+        if (isDownloadable(details)) {
+            return;
+        }
+        const response = yield fetch(details.url, { mode: 'no-cors' });
+        const blob = yield response.blob();
+        const url = URL.createObjectURL(blob);
+        const viewerUrl = getViewerURL(url);
+        return { redirectUrl: viewerUrl, };
+    }), {
+        urls: [
+            'file://*/*.pdf',
+            'file://*/*.PDF',
+        ],
+        types: ['main_frame', 'sub_frame'],
+    }, ['blocking']);
+}
 chrome.extension.isAllowedFileSchemeAccess((isAllowedAccess) => {
     if (isAllowedAccess) {
         return;
