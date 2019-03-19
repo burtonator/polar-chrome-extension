@@ -10,7 +10,7 @@
     </option>
     <option name="RIGHT_MARGIN" value="80" />
     <option name="WRAP_COMMENTS" value="true" />
-    <JSCodeStyleSettings>
+    <JSCodeStyleSettings version="0">
       <option name="USE_CHAINED_CALLS_GROUP_INDENTS" value="true" />
     </JSCodeStyleSettings>
     <JSON>
@@ -26,7 +26,7 @@
         </value>
       </option>
     </JavaCodeStyleSettings>
-    <TypeScriptCodeStyleSettings>
+    <TypeScriptCodeStyleSettings version="0">
       <option name="FORCE_SEMICOLON_STYLE" value="true" />
       <option name="USE_DOUBLE_QUOTES" value="false" />
       <option name="IMPORTS_WRAP" value="0" />

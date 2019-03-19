@@ -22,7 +22,7 @@
     "unlimitedStorage",
     "declarativeContent",
     "idle",
-    "storage",
+    "storage"
   ],
   "optional_permissions": [
     "clipboardRead",

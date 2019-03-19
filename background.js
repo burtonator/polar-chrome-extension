@@ -7,16 +7,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-const ALLOWED_ORIGINS = 'https://app.getpolarized.io';
-const INITIAL_URL = 'https://app.getpolarized.io/?utm_source=app_on_install&utm_medium=chrome_extension';
+const HOST = 'localapp.getpolarized.io';
+const ALLOWED_ORIGINS = `https://${HOST}`;
+const INITIAL_URL = `https://${HOST}/?utm_source=app_on_install&utm_medium=chrome_extension`;
 function getViewerURL(pdfURL) {
-    return 'https://app.getpolarized.io/pdfviewer/web/index.html?file=' +
+    return `https://${HOST}/pdfviewer/web/index.html?file=` +
         encodeURIComponent(pdfURL) +
-        '&utm_source=pdf_link&utm_medium=chrome_extension';
+        '&utm_source=pdf_link&utm_medium=chrome_extension&preview=true&from=extension';
 }
-function loadLink(link) {
-    chrome.tabs.create({ url: link });
+function loadLink(url) {
+    chrome.tabs.create({ url });
 }
 function isDownloadable(details) {
     if (details.url.includes('pdfjs.action=download') ||

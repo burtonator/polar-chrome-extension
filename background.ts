@@ -3,15 +3,23 @@ import WebRequestBodyDetails = chrome.webRequest.WebRequestBodyDetails;
 import WebNavigationParentedCallbackDetails = chrome.webNavigation.WebNavigationParentedCallbackDetails;
 import BlockingResponse = chrome.webRequest.BlockingResponse;
 
+const HOST = 'localapp.getpolarized.io';
+
 // We can't use multiple origins with this type of request so we have to
 // see which URL we're redirecting to but in practice I think our main app URL
 // is fine.
-const ALLOWED_ORIGINS = 'https://app.getpolarized.io';
+const ALLOWED_ORIGINS = `https://${HOST}`;
 
 // Load the Polar webapp after install which will send to login if not
 // authenticated first and also give the user the option to download.
 
-const INITIAL_URL = 'https://app.getpolarized.io/?utm_source=app_on_install&utm_medium=chrome_extension';
+const INITIAL_URL = `https://${HOST}/?utm_source=app_on_install&utm_medium=chrome_extension`;
+
+// TODO:
+//
+// Algorithm for adding documents:
+//
+//  - documents aren't auto-saved by default
 
 // FIXME work on detecting polar via ping to see if it's running and when it is
 // see if we should 'prefer' the local desktop version and how we're going to do that
@@ -22,32 +30,21 @@ const INITIAL_URL = 'https://app.getpolarized.io/?utm_source=app_on_install&utm_
 //
 //  - if the app is NOT running, but logged in automatically add to polar
 //
-//  - else preview and add an 'Add +' button that prompts to save and then adds the document.
-//   this one can be done later though.
-//
-//  - FIXME only show the button when the desktop app is active ...
-//
-// - FIXME pass a param of &desktop_active= with true|false as the options and
-//   or have the chrome extension add/remove the button directly
-//
-// - if the desktop app is running,
-//
-// - TODO: new polar nav bar should have:
-//
-//    - polar identify branding to the left...
-//
-//    - 'add to polar' button to the left of the logo
+//  - Else preview and add an 'Add +' button that prompts to save and then adds the document.
+//    this one can be done later though.
+
+// for now have a floating 'add to polar' button if we are in 'preview' mode.
 
 function getViewerURL(pdfURL: string) {
 
-    return 'https://app.getpolarized.io/pdfviewer/web/index.html?file=' +
+    return `https://${HOST}/pdfviewer/web/index.html?file=` +
         encodeURIComponent(pdfURL) +
-        '&utm_source=pdf_link&utm_medium=chrome_extension';
+        '&utm_source=pdf_link&utm_medium=chrome_extension&preview=true&from=extension';
 
 }
 
-function loadLink(link: string) {
-    chrome.tabs.create({ url: link });
+function loadLink(url: string) {
+    chrome.tabs.create({ url });
 }
 
 /**
@@ -277,12 +274,12 @@ class DesktopAppPinger {
 
 }
 
-export interface PingResponse {
+interface PingResponse {
     readonly timestamp: number;
     readonly version: string;
 }
 
-export type DesktopAppState = 'active' | 'inactive';
+type DesktopAppState = 'active' | 'inactive';
 
 chrome.webRequest.onHeadersReceived.addListener(details => {
 
