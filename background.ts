@@ -27,6 +27,9 @@ const INITIAL_URL = `https://${HOST}/?utm_source=app_on_install&utm_medium=chrom
 //  - Else preview and add an 'Add +' button that prompts to save and then adds the document.
 //    this one can be done later though.
 
+// FIXME the button prefers the local app right now... and there's no concept of
+// 'capture' for the webapp so I'm not sure the best way to handle this.
+
 function getViewerURL(pdfURL: string) {
 
     if (pdfURL.startsWith("http://")) {
