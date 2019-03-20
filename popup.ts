@@ -60,7 +60,37 @@ function closeWindowAfterDelay() {
     setTimeout(() => window.close(), 7500);
 }
 
+/**
+ * Return true if this is a valid link to capture.
+ */
+function isValidLink(link: string): boolean {
+
+    if (! link) {
+        return false;
+    }
+
+    if (link.startsWith("file:")) {
+        return false;
+    }
+
+    if (link.startsWith("https://app.getpolarized.io")) {
+        return false;
+    }
+
+    if (link.startsWith("https://localapp.getpolarized.io")) {
+        return false;
+    }
+
+    return true;
+
+}
+
 async function sendLinkToPolar(link: string): Promise<void> {
+
+    if (! isValidLink(link)) {
+        console.warn("Link is not valid: " + link);
+        return;
+    }
 
     console.log("Sending link to polar: " + link);
 
