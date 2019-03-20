@@ -436,11 +436,7 @@ chrome.runtime.onInstalled.addListener(() => {
 
 });
 
-console.log("FIXME: here asdf2");
-
 chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {
-
-    console.log("FIXME: got message");
 
     const isAddContentMessage = (): boolean => {
         return message && message.type && message.type === 'polar-extension-import-content';
@@ -469,11 +465,9 @@ chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => 
     };
 
     if (isAddContentMessage()) {
-        console.log("FIXME: got message1");
 
         if (isAuthorized()) {
 
-            console.log("FIXME: got message3 to import content.");
             // FIXME: the user is trying to add the content from
             // the preview app and into the local desktop app.
 

@@ -215,9 +215,7 @@ chrome.runtime.onInstalled.addListener(() => {
     else {
     }
 });
-console.log("FIXME: here asdf2");
 chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {
-    console.log("FIXME: got message");
     const isAddContentMessage = () => {
         return message && message.type && message.type === 'polar-extension-import-content';
     };
@@ -235,9 +233,7 @@ chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => 
         return url.hostname.endsWith(".getpolarized.io");
     };
     if (isAddContentMessage()) {
-        console.log("FIXME: got message1");
         if (isAuthorized()) {
-            console.log("FIXME: got message3 to import content.");
             const link = message.link;
             const contentType = message.contentType;
             ImportContentAPI.doImport(link, contentType)
