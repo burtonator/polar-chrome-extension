@@ -46,6 +46,13 @@
     "all_frames": true,
     "js": ["contentscript.js"]
   }],
+  "externally_connectable": {
+    "matches": [
+      "*://*.getpolarized.io/*",
+      "*://app.getpolarized.io/*",
+      "*://localapp.getpolarized.io/*"
+    ]
+  },
   "file_browser_handlers": [{
     "id": "open-as-pdf",
     "default_title": "Open with Polar",

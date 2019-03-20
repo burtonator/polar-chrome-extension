@@ -38,9 +38,11 @@ function getViewerURL(pdfURL: string) {
         pdfURL = CORSProxy.createProxyURL(pdfURL);
     }
 
+    const desktopAppState = desktopAppPinger.getState();
+
     return `https://${HOST}/pdfviewer/web/index.html?file=` +
         encodeURIComponent(pdfURL) +
-        '&utm_source=pdf_link&utm_medium=chrome_extension&preview=true&from=extension&zoom=page-width';
+        `&utm_source=pdf_link&utm_medium=chrome_extension&preview=true&from=extension&zoom=page-width&desktop-app=${desktopAppState}`;
 
 }
 
@@ -255,7 +257,7 @@ class DesktopAppPinger {
             // for this functionality.
 
             const xrequest = new XMLHttpRequest();
-            xrequest.open("GET", url);
+            xrequest.open("POST", url);
 
             xrequest.onload = () => {
                 resolve();
@@ -433,3 +435,60 @@ chrome.runtime.onInstalled.addListener(() => {
 
 });
 
+console.log("FIXME: here asdf");
+
+chrome.runtime.onMessageExternal.addListener(() => {
+    console.log("FIXME: asdf1");
+});
+
+chrome.runtime.onMessage.addListener(() => {
+    console.log("FIXME: asdf2");
+});
+
+chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {
+
+    console.log("FIXME: got message");
+
+    const isAddContentMessage = (): boolean => {
+        return message && message.type && message.type === 'polar-extension-import-content';
+    };
+
+    const isAuthorized = (): boolean => {
+
+        if (! sender.url) {
+            // sender must have a URL
+            return false;
+        }
+
+        if (! sender.url.startsWith("https:")) {
+            // must be secure
+            return false;
+        }
+
+        const url = new URL(sender.url);
+
+        if (! url.hostname) {
+            return false;
+        }
+
+        return url.hostname.endsWith(".getpolarized.io");
+
+    };
+
+    if (isAddContentMessage()) {
+        console.log("FIXME: got message1");
+
+        if (isAuthorized()) {
+
+            console.log("FIXME: got message2 to import content.");
+            // FIXME: the user is trying to add the content from
+            // the preview app and into the local desktop app.
+
+        }
+
+    }
+
+});
+
+const desktopAppPinger = new DesktopAppPinger();
+desktopAppPinger.start();

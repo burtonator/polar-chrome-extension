@@ -14,9 +14,10 @@ function getViewerURL(pdfURL) {
     if (pdfURL.startsWith("http://")) {
         pdfURL = CORSProxy.createProxyURL(pdfURL);
     }
+    const desktopAppState = desktopAppPinger.getState();
     return `https://${HOST}/pdfviewer/web/index.html?file=` +
         encodeURIComponent(pdfURL) +
-        '&utm_source=pdf_link&utm_medium=chrome_extension&preview=true&from=extension&zoom=page-width';
+        `&utm_source=pdf_link&utm_medium=chrome_extension&preview=true&from=extension&zoom=page-width&desktop-app=${desktopAppState}`;
 }
 function loadLink(url) {
     chrome.tabs.create({ url });
@@ -117,7 +118,7 @@ class DesktopAppPinger {
             const url = 'http://localhost:8500/rest/v1/ping';
             return new Promise((resolve, reject) => {
                 const xrequest = new XMLHttpRequest();
-                xrequest.open("GET", url);
+                xrequest.open("POST", url);
                 xrequest.onload = () => {
                     resolve();
                 };
@@ -214,4 +215,38 @@ chrome.runtime.onInstalled.addListener(() => {
     else {
     }
 });
+console.log("FIXME: here asdf");
+chrome.runtime.onMessageExternal.addListener(() => {
+    console.log("FIXME: asdf1");
+});
+chrome.runtime.onMessage.addListener(() => {
+    console.log("FIXME: asdf2");
+});
+chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {
+    console.log("FIXME: got message");
+    const isAddContentMessage = () => {
+        return message && message.type && message.type === 'polar-extension-import-content';
+    };
+    const isAuthorized = () => {
+        if (!sender.url) {
+            return false;
+        }
+        if (!sender.url.startsWith("https:")) {
+            return false;
+        }
+        const url = new URL(sender.url);
+        if (!url.hostname) {
+            return false;
+        }
+        return url.hostname.endsWith(".getpolarized.io");
+    };
+    if (isAddContentMessage()) {
+        console.log("FIXME: got message1");
+        if (isAuthorized()) {
+            console.log("FIXME: got message2 to import content.");
+        }
+    }
+});
+const desktopAppPinger = new DesktopAppPinger();
+desktopAppPinger.start();
 //# sourceMappingURL=background.js.map

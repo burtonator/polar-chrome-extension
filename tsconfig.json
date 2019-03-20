@@ -12,7 +12,7 @@
     "strictFunctionTypes": true,
     "sourceMap": true,
     "target": "ES2015",
-    "module": "commonjs",
+    "module": "ES2015",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
