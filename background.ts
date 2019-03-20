@@ -15,12 +15,6 @@ const ALLOWED_ORIGINS = `https://${HOST}`;
 
 const INITIAL_URL = `https://${HOST}/?utm_source=app_on_install&utm_medium=chrome_extension`;
 
-// TODO:
-//
-// Algorithm for adding documents:
-//
-//  - documents aren't auto-saved by default
-
 // FIXME work on detecting polar via ping to see if it's running and when it is
 // see if we should 'prefer' the local desktop version and how we're going to do that
 //
@@ -32,8 +26,6 @@ const INITIAL_URL = `https://${HOST}/?utm_source=app_on_install&utm_medium=chrom
 //
 //  - Else preview and add an 'Add +' button that prompts to save and then adds the document.
 //    this one can be done later though.
-
-// for now have a floating 'add to polar' button if we are in 'preview' mode.
 
 function getViewerURL(pdfURL: string) {
 
