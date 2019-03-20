@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -7,6 +6,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import { ImportContentAPI } from './ImportContentAPI';
 const HOST = 'localapp.getpolarized.io';
 const ALLOWED_ORIGINS = `https://${HOST}`;
 const INITIAL_URL = `https://${HOST}/?utm_source=app_on_install&utm_medium=chrome_extension`;
@@ -215,13 +215,7 @@ chrome.runtime.onInstalled.addListener(() => {
     else {
     }
 });
-console.log("FIXME: here asdf");
-chrome.runtime.onMessageExternal.addListener(() => {
-    console.log("FIXME: asdf1");
-});
-chrome.runtime.onMessage.addListener(() => {
-    console.log("FIXME: asdf2");
-});
+console.log("FIXME: here asdf2");
 chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {
     console.log("FIXME: got message");
     const isAddContentMessage = () => {
@@ -243,7 +237,17 @@ chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => 
     if (isAddContentMessage()) {
         console.log("FIXME: got message1");
         if (isAuthorized()) {
-            console.log("FIXME: got message2 to import content.");
+            console.log("FIXME: got message3 to import content.");
+            const link = message.link;
+            const contentType = message.contentType;
+            ImportContentAPI.doImport(link, contentType)
+                .then(() => {
+                sendResponse({ success: true });
+            })
+                .catch(err => {
+                console.error("Unable to import ");
+                sendResponse({ success: false, message: err.message });
+            });
         }
     }
 });

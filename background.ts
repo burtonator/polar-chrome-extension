@@ -2,6 +2,7 @@ import WebResponseHeadersDetails = chrome.webRequest.WebResponseHeadersDetails;
 import WebRequestBodyDetails = chrome.webRequest.WebRequestBodyDetails;
 import WebNavigationParentedCallbackDetails = chrome.webNavigation.WebNavigationParentedCallbackDetails;
 import BlockingResponse = chrome.webRequest.BlockingResponse;
+import {ImportContentAPI} from './ImportContentAPI';
 
 const HOST = 'localapp.getpolarized.io';
 
@@ -435,15 +436,7 @@ chrome.runtime.onInstalled.addListener(() => {
 
 });
 
-console.log("FIXME: here asdf");
-
-chrome.runtime.onMessageExternal.addListener(() => {
-    console.log("FIXME: asdf1");
-});
-
-chrome.runtime.onMessage.addListener(() => {
-    console.log("FIXME: asdf2");
-});
+console.log("FIXME: here asdf2");
 
 chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {
 
@@ -480,9 +473,21 @@ chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => 
 
         if (isAuthorized()) {
 
-            console.log("FIXME: got message2 to import content.");
+            console.log("FIXME: got message3 to import content.");
             // FIXME: the user is trying to add the content from
             // the preview app and into the local desktop app.
+
+            const link: string = message.link;
+            const contentType: string | undefined = message.contentType;
+
+            ImportContentAPI.doImport(link, contentType)
+                .then(() => {
+                    sendResponse({success: true});
+                })
+                .catch(err => {
+                    console.error("Unable to import ");
+                    sendResponse({success: false, message: err.message});
+                });
 
         }
 
@@ -492,3 +497,4 @@ chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => 
 
 const desktopAppPinger = new DesktopAppPinger();
 desktopAppPinger.start();
+
