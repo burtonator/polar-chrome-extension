@@ -37,9 +37,15 @@ const INITIAL_URL = `https://${HOST}/?utm_source=app_on_install&utm_medium=chrom
 
 function getViewerURL(pdfURL: string) {
 
+    if (pdfURL.startsWith("http://")) {
+        // must use our CORS proxy which is HTTPS to view this to prevent
+        // mixed content errors.
+        pdfURL = CORSProxy.createProxyURL(pdfURL);
+    }
+
     return `https://${HOST}/pdfviewer/web/index.html?file=` +
         encodeURIComponent(pdfURL) +
-        '&utm_source=pdf_link&utm_medium=chrome_extension&preview=true&from=extension';
+        '&utm_source=pdf_link&utm_medium=chrome_extension&preview=true&from=extension&zoom=page-width';
 
 }
 
@@ -274,6 +280,25 @@ class DesktopAppPinger {
 
 }
 
+class CORSProxy {
+
+    /**
+     * Create a proxy URL which adds CORS headers to allow us to download it
+     * from within the Polar webapp.
+     *
+     * @param targetURL
+     */
+    public static createProxyURL(targetURL: string) {
+
+        // TODO: is it possible to make this use the CDN so we have one in
+        // every datacenter?
+
+        return "https://us-central1-polar-cors.cloudfunctions.net/cors?url=" + encodeURIComponent(targetURL);
+
+    }
+
+}
+
 interface PingResponse {
     readonly timestamp: number;
     readonly version: string;
@@ -315,10 +340,18 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
 //
 chrome.webRequest.onHeadersReceived.addListener(details => {
 
-        const responseHeaders = details.responseHeaders || [];
+        let responseHeaders = details.responseHeaders || [];
 
         if (isPDF(details)) {
+
+            // We have to remove existing CORS headers and replace them with
+            // our own or else we get two headers which isn't what we want.
+            // We only care about our header.
+            responseHeaders =
+                responseHeaders.filter(header => header.name !== 'Access-Control-Allow-Origin');
+
             responseHeaders.push({name: 'Access-Control-Allow-Origin', value: ALLOWED_ORIGINS});
+
         }
 
         return {responseHeaders};

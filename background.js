@@ -11,9 +11,12 @@ const HOST = 'localapp.getpolarized.io';
 const ALLOWED_ORIGINS = `https://${HOST}`;
 const INITIAL_URL = `https://${HOST}/?utm_source=app_on_install&utm_medium=chrome_extension`;
 function getViewerURL(pdfURL) {
+    if (pdfURL.startsWith("http://")) {
+        pdfURL = CORSProxy.createProxyURL(pdfURL);
+    }
     return `https://${HOST}/pdfviewer/web/index.html?file=` +
         encodeURIComponent(pdfURL) +
-        '&utm_source=pdf_link&utm_medium=chrome_extension&preview=true&from=extension';
+        '&utm_source=pdf_link&utm_medium=chrome_extension&preview=true&from=extension&zoom=page-width';
 }
 function loadLink(url) {
     chrome.tabs.create({ url });
@@ -128,6 +131,11 @@ class DesktopAppPinger {
     }
 }
 DesktopAppPinger.UPDATE_TIMEOUT = 1000;
+class CORSProxy {
+    static createProxyURL(targetURL) {
+        return "https://us-central1-polar-cors.cloudfunctions.net/cors?url=" + encodeURIComponent(targetURL);
+    }
+}
 chrome.webRequest.onHeadersReceived.addListener(details => {
     if (details.method !== 'GET') {
         return;
@@ -147,8 +155,10 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
     types: ['main_frame', 'sub_frame'],
 }, ['blocking', 'responseHeaders']);
 chrome.webRequest.onHeadersReceived.addListener(details => {
-    const responseHeaders = details.responseHeaders || [];
+    let responseHeaders = details.responseHeaders || [];
     if (isPDF(details)) {
+        responseHeaders =
+            responseHeaders.filter(header => header.name !== 'Access-Control-Allow-Origin');
         responseHeaders.push({ name: 'Access-Control-Allow-Origin', value: ALLOWED_ORIGINS });
     }
     return { responseHeaders };
