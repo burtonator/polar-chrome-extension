@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { ImportContentAPI } from './ImportContentAPI';
-const HOST = 'localapp.getpolarized.io';
+const HOST = 'app.getpolarized.io';
 const ALLOWED_ORIGINS = `https://${HOST}`;
 const INITIAL_URL = `https://${HOST}/?utm_source=app_on_install&utm_medium=chrome_extension`;
 function getViewerURL(pdfURL) {
