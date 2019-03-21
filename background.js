@@ -216,7 +216,7 @@ chrome.runtime.onInstalled.addListener(() => {
     }
 });
 chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {
-    const isAddContentMessage = () => {
+    const isHandled = () => {
         return message && message.type && message.type === 'polar-extension-import-content';
     };
     const isAuthorized = () => {
@@ -232,7 +232,7 @@ chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => 
         }
         return url.hostname.endsWith(".getpolarized.io");
     };
-    if (isAddContentMessage()) {
+    if (isHandled()) {
         if (isAuthorized()) {
             const link = message.link;
             const contentType = message.contentType;
@@ -245,6 +245,14 @@ chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => 
                 sendResponse({ success: false, message: err.message });
             });
         }
+    }
+});
+chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {
+    const isHandled = () => {
+        return message && message.type && message.type === 'polar-extension-ping';
+    };
+    if (isHandled()) {
+        sendResponse({ pong: true });
     }
 });
 const desktopAppPinger = new DesktopAppPinger();

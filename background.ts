@@ -16,21 +16,6 @@ const ALLOWED_ORIGINS = `https://${HOST}`;
 
 const INITIAL_URL = `https://${HOST}/?utm_source=app_on_install&utm_medium=chrome_extension`;
 
-// FIXME work on detecting polar via ping to see if it's running and when it is
-// see if we should 'prefer' the local desktop version and how we're going to do that
-//
-//  - if the user has polar as a desktop app, tell the app that it's running
-//
-//  - if the app is running, display an 'Add to Desktop' button
-//
-//  - if the app is NOT running, but logged in automatically add to polar
-//
-//  - Else preview and add an 'Add +' button that prompts to save and then adds the document.
-//    this one can be done later though.
-
-// FIXME the button prefers the local app right now... and there's no concept of
-// 'capture' for the webapp so I'm not sure the best way to handle this.
-
 function getViewerURL(pdfURL: string) {
 
     if (pdfURL.startsWith("http://")) {
@@ -372,8 +357,9 @@ if (ENABLE_FILE_URLS) {
             return;
         }
 
-        // FIXME: this has a bug where we can't determine how to open the file URL properly
-        // because it can't use a CORS request with fetch for some reason.
+        // TODO: this has a bug where we can't determine how to open the file
+        // URL properly because it can't use a CORS request with fetch for
+        // some reason.
 
         // background.js:120 Fetch API cannot load file:///Users/burton/Downloads/bitcoin%20(1).pdf. URL scheme "file" is not supported.
 
@@ -438,7 +424,7 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {
 
-    const isAddContentMessage = (): boolean => {
+    const isHandled = (): boolean => {
         return message && message.type && message.type === 'polar-extension-import-content';
     };
 
@@ -464,12 +450,9 @@ chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => 
 
     };
 
-    if (isAddContentMessage()) {
+    if (isHandled()) {
 
         if (isAuthorized()) {
-
-            // FIXME: the user is trying to add the content from
-            // the preview app and into the local desktop app.
 
             const link: string = message.link;
             const contentType: string | undefined = message.contentType;
@@ -485,6 +468,19 @@ chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => 
 
         }
 
+    }
+
+});
+
+// used to determine if the extension is installed.
+chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {
+
+    const isHandled = (): boolean => {
+        return message && message.type && message.type === 'polar-extension-ping';
+    };
+
+    if (isHandled()) {
+        sendResponse({pong: true});
     }
 
 });
