@@ -1,5 +1,6 @@
 {
   "name": "Polar - PDF, Web, and Document Annotation",
+  "short_name": "Polar",
   "description": "Document manager for PDF, web content, books, and notes with tagging, annotations, and highlighting.",
   "version": "1.15.0",
   "background": {
