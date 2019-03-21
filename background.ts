@@ -4,7 +4,7 @@ import WebNavigationParentedCallbackDetails = chrome.webNavigation.WebNavigation
 import BlockingResponse = chrome.webRequest.BlockingResponse;
 import {ImportContentAPI} from './ImportContentAPI';
 
-const HOST = 'localapp.getpolarized.io';
+const HOST = 'app.getpolarized.io';
 
 // We can't use multiple origins with this type of request so we have to
 // see which URL we're redirecting to but in practice I think our main app URL
