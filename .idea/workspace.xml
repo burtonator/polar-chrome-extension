@@ -24,15 +24,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ca66773-10fc-4dff-9729-913e1e100df0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImportContentAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ImportContentAPI.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/background.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/background.ts" beforeDir="false" afterPath="$PROJECT_DIR$/background.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/popup.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -90,8 +83,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/background.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="455" column="17" selection-start-line="455" selection-start-column="17" selection-end-line="455" selection-end-column="17" />
+            <state relative-caret-position="532">
+              <caret line="362" column="8" lean-forward="true" selection-start-line="362" selection-start-column="8" selection-end-line="362" selection-end-column="8" />
               <folding>
                 <element signature="n#WebResponseHeadersDetails#0" expanded="true" />
               </folding>
@@ -135,8 +128,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>onheadersre</find>
-      <find>responseHeaders</find>
       <find>createContentDispositionAttachmentHeaders</find>
       <find>http</find>
       <find>tabCa</find>
@@ -165,6 +156,8 @@
       <find>popup</find>
       <find>isValidLink</find>
       <find>isValid</find>
+      <find>onInstalled</find>
+      <find>FIXME</find>
     </findStrings>
     <replaceStrings>
       <replace>cp</replace>
@@ -311,7 +304,7 @@
       <workItem from="1543441534169" duration="29663000" />
       <workItem from="1544805861894" duration="711000" />
       <workItem from="1552675553269" duration="17507000" />
-      <workItem from="1553096458411" duration="11499000" />
+      <workItem from="1553096458411" duration="13688000" />
     </task>
     <task id="LOCAL-00001" summary="we can now read the current chrome UIRL...">
       <created>1543443674691</created>
@@ -481,11 +474,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553116638058</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="webpack working now... chrome extension properly sends to the desktop app too...">
+      <created>1553124724215</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1553124724215</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70596000" />
+    <option name="totallyTimeSpent" value="72785000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="501" y="120" width="1664" height="1329" extended-state="0" />
@@ -1609,7 +1609,8 @@
     <MESSAGE value="hand off URLs to the polar web app and warn that capturing only works with the desktop app." />
     <MESSAGE value="handle messages from the webapp.." />
     <MESSAGE value="refactoring now to make the code modular but I need to move to webpack now..." />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring now to make the code modular but I need to move to webpack now..." />
+    <MESSAGE value="webpack working now... chrome extension properly sends to the desktop app too..." />
+    <option name="LAST_COMMIT_MESSAGE" value="webpack working now... chrome extension properly sends to the desktop app too..." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/icon-polar-inactive.png">
@@ -1782,8 +1783,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/background.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="455" column="17" selection-start-line="455" selection-start-column="17" selection-end-line="455" selection-end-column="17" />
+        <state relative-caret-position="532">
+          <caret line="362" column="8" lean-forward="true" selection-start-line="362" selection-start-column="8" selection-end-line="362" selection-end-column="8" />
           <folding>
             <element signature="n#WebResponseHeadersDetails#0" expanded="true" />
           </folding>
