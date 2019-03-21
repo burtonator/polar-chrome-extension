@@ -1,3 +1,4 @@
+import {ImportContentAPI} from './ImportContentAPI';
 
 function loadLinkInNewTab(link: string) {
     chrome.tabs.create({url: link});
@@ -6,14 +7,6 @@ function loadLinkInNewTab(link: string) {
 function queryCurrentTabForLink() {
 
     return new Promise<string>(resolve => {
-
-        // FIXME: add contentType to the payload as we can get this from
-        // document.contentType and for PDF it will be application/pdf which
-        // will enable us to handle it properly in capture by importing it
-        // not rendering it.
-        //
-        // It might ALSO be better to just send the raw base64 encode bytes
-        // but not sure I can do that.
 
         chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, (tabs) => {
             const link = tabs[0].url;
@@ -61,86 +54,16 @@ function closeWindowAfterDelay() {
 }
 
 /**
- * Return true if this is a valid link to capture.
- */
-function isValidLink(link: string): boolean {
-
-    if (! link) {
-        return false;
-    }
-
-    if (link.startsWith("file:")) {
-        return false;
-    }
-
-    if (link.startsWith("https://app.getpolarized.io")) {
-        return false;
-    }
-
-    if (link.startsWith("https://localapp.getpolarized.io")) {
-        return false;
-    }
-
-    return true;
-
-}
-
-async function sendLinkToPolar(link: string): Promise<void> {
-
-    if (! isValidLink(link)) {
-        console.warn("Link is not valid: " + link);
-        return;
-    }
-
-    console.log("Sending link to polar: " + link);
-
-    const url = 'http://localhost:8500/rest/v1/capture/trigger';
-
-    const data: any = {
-        link
-    };
-
-    return new Promise<void>((resolve, reject) => {
-
-        // For some reason the fetch API doesn't work and we have to hse XHR
-        // for this functionality.
-
-        const xrequest = new XMLHttpRequest();
-        xrequest.open("POST", url);
-
-        xrequest.onload = () => {
-            resolve();
-        };
-
-        xrequest.onerror = () => {
-            reject("Request failed to: " + url);
-        };
-
-        xrequest.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-        xrequest.send(JSON.stringify(data));
-
-    });
-
-    // await fetch(url, {
-    //     method: "POST",
-    //     cache: "no-store",
-    //     // mode: 'no-cors',
-    //     headers: {
-    //         "Content-Type": "application/json; charset=utf-8",
-    //     },
-    //     body: JSON.stringify(data),
-    // });
-
-}
-
-/**
  * Called when the user clicks the button in the page to 'share' with Polar.
  */
 async function onExtensionActivated() {
 
+    // TODO: if they hit share on the PDF viewer itself try to unwrap the file
+    // URL and send that instead.
+
     const link = await queryCurrentTabForLink();
 
-    await sendLinkToPolar(link!);
+    await ImportContentAPI.doImport(link!, document.contentType);
 
     showSuccess();
     closeWindowAfterDelay();

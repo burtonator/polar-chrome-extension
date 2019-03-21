@@ -1,6 +1,5 @@
 export class ImportContentAPI {
 
-
     public static async doImport(link: string, contentType?: string): Promise<void> {
 
         if (! this.isValidLink(link)) {
