@@ -23,9 +23,9 @@
     <option name="FILTER_BY_CURRENT_PROJECT" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ca66773-10fc-4dff-9729-913e1e100df0" name="Default Changelist" comment="...">
+    <list default="true" id="9ca66773-10fc-4dff-9729-913e1e100df0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,20 +35,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/manifest.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
+            <state relative-caret-position="340">
+              <caret line="20" selection-start-line="20" selection-end-line="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/publish.js">
+        <entry file="file://$PROJECT_DIR$/background-bundle.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webpack.config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+            <state relative-caret-position="836">
+              <caret line="82" column="23" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -182,7 +187,6 @@
         <option value="$PROJECT_DIR$/contentscript.ts" />
         <option value="$PROJECT_DIR$/PERMISSIONS.md" />
         <option value="$PROJECT_DIR$/tsconfig.json" />
-        <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/popup.html" />
         <option value="$PROJECT_DIR$/background.ts" />
         <option value="$PROJECT_DIR$/publish.js" />
@@ -191,11 +195,12 @@
         <option value="$PROJECT_DIR$/popup.ts" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/manifest.json" />
+        <option value="$PROJECT_DIR$/webpack.config.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="510" />
+    <option name="x" value="506" />
     <option name="y" value="148" />
     <option name="width" value="1695" />
     <option name="height" value="1200" />
@@ -300,7 +305,7 @@
       <workItem from="1544805861894" duration="711000" />
       <workItem from="1552675553269" duration="17507000" />
       <workItem from="1553096458411" duration="13688000" />
-      <workItem from="1553184402152" duration="3267000" />
+      <workItem from="1553184402152" duration="4230000" />
     </task>
     <task id="LOCAL-00001" summary="we can now read the current chrome UIRL...">
       <created>1543443674691</created>
@@ -519,14 +524,21 @@
       <option name="project" value="LOCAL" />
       <updated>1553188956764</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="include a short name">
+      <created>1553192748766</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1553192748766</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79989000" />
+    <option name="totallyTimeSpent" value="80952000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="510" y="148" width="1695" height="1200" extended-state="0" />
+    <frame x="506" y="148" width="1695" height="1200" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26711085" />
@@ -589,8 +601,10 @@
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/metadata/Comments.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/annotation_sidebar/child_annotations/FlashcardDropdown.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/datastore/PersistenceLayer.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/viewer/AddContentImporters.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/spectron/ui-components/CommentComponentExample.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/ui/prioritized/PrioritizedComponentManager.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/util/CORSProxy.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/model/Model.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/docformat/PDFFormat.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/docformat/DocFormat.js" />
@@ -598,6 +612,7 @@
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/controller/WebController.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/logger/Logging.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/spectron/reactstrap/LogEventViewer.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/viewer/AddContentImporter.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/util/Dictionaries.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/util/ProgressTracker.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/ui/splitter/Splitter.js" />
@@ -620,6 +635,10 @@
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/datastore/Datastore.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/datastore/CloudAwareDatastore.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/view/WebView.js" />
+        <option value="$PROJECT_DIR$/ImportContentAPI.js.map" />
+        <option value="$PROJECT_DIR$/ImportContentAPI.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/viewer/PreviewURLs.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/viewer/LoginURLs.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/annotation_sidebar/DocAnnotationIndexes.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/annotation_sidebar/DocAnnotationIndex.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/annotation_sidebar/child_annotations/ChildAnnotationSection.js" />
@@ -629,6 +648,13 @@
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/comments/CommentsController.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/annotation_sidebar/DocAnnotationIndexesTest.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/annotation_sidebar/RichTextArea.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/viewer/ShareContentControl.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/apps/repository/js/doc_repo/doc_buttons/DocButton.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/apps/repository/js/doc_repo/doc_buttons/FlagDocButton.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/apps/repository/js/doc_repo/doc_buttons/ArchiveDocButton.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/apps/repository/js/doc_repo/doc_buttons/ToggleIcon.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/apps/repository/js/doc_repo/FilteredRepoDocInfoIndex.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/apps/repository/js/doc_repo/AddContentButton.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/test/spectron/ipc-engine-from-renderer-to-renderer/service.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/test/spectron/ipc-engine-from-renderer-to-renderer/client.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/test/spectron/ipc-engine-from-renderer-to-renderer/index.js" />
@@ -714,6 +740,7 @@
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/capture/renderer/ContentCaptureController.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/capture/renderer/AdBlocker.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/capture/renderer/ContentMeta.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/apps/repository/js/annotation_repo/AnnotationRepoFilterBar.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/capture/renderer/TimeoutEvent.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/capture/renderer/ContentCaptureFunctions.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/ipc/pipes/ElectronRendererPipe.js" />
@@ -901,12 +928,14 @@
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/sync/framework/anki/FlashcardDescriptors.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/sync/framework/SyncTask.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/sync/framework/SyncEngine.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/viewer/PreviewTour.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/sync/framework/SyncProgressListener.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/sync/framework/SyncQueue.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/sync/framework/SyncProgress.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/sync/framework/SyncQueueTest.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/sync/framework/SyncEngineDescriptor.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/sync/framework/SyncEngineRegistry.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/viewer/ShareContentButton.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/logger/Callers.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/logger/file/FilenameFormatter.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/logger/file/LogPurger.js" />
@@ -915,6 +944,7 @@
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/test/spectron/debug-node-integration/app.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/sync/SyncApp.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/sync/framework/SyncJob.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/search/arxiv/ARXIVSearchEngine.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/logger/MultiLogger.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/logger/FileLogger.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/logger/LogLevels.js" />
@@ -978,6 +1008,7 @@
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/backend/interceptor/CacheStats.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/backend/interceptor/Protocols.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/backend/interceptor/CachingStreamInterceptorService.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/repository/AddFileRequestsTest.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/backend/interceptor/CacheInterceptorService.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/util/ts/OptionalTest.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/util/ts/MutatorTest.js" />
@@ -1607,14 +1638,9 @@
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/test/sandbox/jquery-ui/spec.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/test/sandbox/jquery-ui/index.js" />
         <option value="$PROJECT_DIR$/../polar-bookshelf/web/test/sandbox/jquery-ui/app.js" />
-        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/viewer/AddContentImporter.js" />
-        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/viewer/AddContentImporters.js" />
-        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/util/CORSProxy.js" />
-        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/viewer/PreviewURLs.js" />
-        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/viewer/LoginURLs.js" />
-        <option value="$PROJECT_DIR$/ImportContentAPI.js.map" />
-        <option value="$PROJECT_DIR$/ImportContentAPI.js" />
-        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/repository/AddFileRequestsTest.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/util/SocialLinks.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/ui/SVGLogos.js" />
+        <option value="$PROJECT_DIR$/../polar-bookshelf/web/js/apps/viewer/ShareContentButtons.js" />
       </list>
     </option>
   </component>
@@ -1652,7 +1678,8 @@
     <MESSAGE value="moved publish from FF branch so that we can publish to FF and chrome browser stores..." />
     <MESSAGE value="some mild cleanup" />
     <MESSAGE value="..." />
-    <option name="LAST_COMMIT_MESSAGE" value="..." />
+    <MESSAGE value="include a short name" />
+    <option name="LAST_COMMIT_MESSAGE" value="include a short name" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/icon-polar-inactive.png">
@@ -1757,13 +1784,6 @@
     <entry file="file://$PROJECT_DIR$/icon-trimmed.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1829,13 +1849,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/manifest.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" selection-start-line="20" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/background-bundle.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/manifest.json">
+    <entry file="file://$PROJECT_DIR$/webpack.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
+        <state relative-caret-position="836">
+          <caret line="82" column="23" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
         </state>
       </provider>
     </entry>

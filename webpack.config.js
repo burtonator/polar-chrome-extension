@@ -80,7 +80,7 @@ module.exports = {
         new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true })
     ],
     optimization: {
-        minimize: true,
+        minimize: false,
         usedExports: true,
         removeAvailableModules: false,
         removeEmptyChunks: false,
