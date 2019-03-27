@@ -320,20 +320,23 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
     },
     ['blocking', 'responseHeaders']);
 
-//
+const ACCESS_CONTROL_ALLOW_ORIGIN = 'Access-Control-Allow-Origin';
+
 chrome.webRequest.onHeadersReceived.addListener(details => {
 
         let responseHeaders = details.responseHeaders || [];
 
         if (isPDF(details)) {
 
+            const hdrName = ACCESS_CONTROL_ALLOW_ORIGIN;
+
             // We have to remove existing CORS headers and replace them with
             // our own or else we get two headers which isn't what we want.
             // We only care about our header.
             responseHeaders =
-                responseHeaders.filter(header => header.name !== 'Access-Control-Allow-Origin');
+                responseHeaders.filter(header => header.name.toLowerCase() !== hdrName.toLowerCase());
 
-            responseHeaders.push({name: 'Access-Control-Allow-Origin', value: ALLOWED_ORIGINS});
+            responseHeaders.push({name: hdrName, value: ALLOWED_ORIGINS});
 
         }
 

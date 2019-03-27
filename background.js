@@ -155,12 +155,14 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
     ],
     types: ['main_frame', 'sub_frame'],
 }, ['blocking', 'responseHeaders']);
+const ACCESS_CONTROL_ALLOW_ORIGIN = 'Access-Control-Allow-Origin';
 chrome.webRequest.onHeadersReceived.addListener(details => {
     let responseHeaders = details.responseHeaders || [];
     if (isPDF(details)) {
+        const hdrName = ACCESS_CONTROL_ALLOW_ORIGIN;
         responseHeaders =
-            responseHeaders.filter(header => header.name !== 'Access-Control-Allow-Origin');
-        responseHeaders.push({ name: 'Access-Control-Allow-Origin', value: ALLOWED_ORIGINS });
+            responseHeaders.filter(header => header.name.toLowerCase() !== hdrName.toLowerCase());
+        responseHeaders.push({ name: hdrName, value: ALLOWED_ORIGINS });
     }
     return { responseHeaders };
 }, {
