@@ -330,6 +330,18 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
 
             const hdrName = ACCESS_CONTROL_ALLOW_ORIGIN;
 
+            // TODO: I actually think this is WRONG and that we should use
+            // req.headers.origin here and pick one based on the origin
+            // to avoid overwriting something that is used by another app.
+            //
+            // https://stackoverflow.com/questions/1653308/access-control-allow-origin-multiple-origin-domains
+            //
+            // it could be possible for another PDF viewer or another PDF
+            // app to request a specific origin and we shouldn't break other
+            // apps.  This is a big complicated though as we have to factor
+            // in the request and join the response with the request to get
+            // both headers.
+
             // We have to remove existing CORS headers and replace them with
             // our own or else we get two headers which isn't what we want.
             // We only care about our header.
