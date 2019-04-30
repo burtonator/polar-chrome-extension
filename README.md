@@ -1,3 +1,1 @@
-https://github.com/yeoman/generator-chrome-extension
-
-https://developer.chrome.com/extensions/samples
+DEPRECATED this has moved to the main Polar repo in /extension
